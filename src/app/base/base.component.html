@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>Météo de la ville de {{meteoArray.city.name}}</h1>
+    <br/>
+    <div class="row">
+        <div class="col-sm-4 col-xs-2 border {{ getClass(i.sys.pod)}} box" *ngFor="let i of meteoArray.list; let i = index">
+            <p class="{{ isHotOrCold(i.main.temp)}} temp"> {{convertToCelsius(i.main.temp) | number: '1.0-1'}}° </p>
+            <p>{{ i.main.humidity }} humidity</p>
+            <p>{{ i.weather[0].description }}</p>
+            <img class="imgTop" src="assets/{{ i.weather[0].icon }}.png" />
+            <p>{{ i.dt_txt }}</p>
+            <p class="hour">{{isRightNow(i.dt_txt)}}</p>
+        </div>
+    </div>
+</div>
